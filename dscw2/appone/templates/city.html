@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+ {% block content %}
+  {% with messages = get_flashed_messages() %}
+   {% if messages %}
+    <ul>
+     {% for message in messages %}
+       <li>{{ message }} </li>
+     {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<br>
+<br>
+<br>
+<br>
+<form action="" method="post" name="citygetter">
+    {{ form.hidden_tag() }}
+    <p>
+      Enter a city's name here:
+       {{ form.city }}<br>
+    </p>
+    <p><input type="submit"></p>
+</form>
+
+{% endblock %}

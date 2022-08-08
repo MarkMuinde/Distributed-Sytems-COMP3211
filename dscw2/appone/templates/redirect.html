@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<h1>Which City's Weather Would You Like To Know About?</h1>
+
+<!--redirect-->
+<p>
+    The city name you have entered is either invalid or not in our database<br>
+    Kindly check your spelling, punctuation and/or capital letters and try again via the link below:<br>
+    <a href = "/">Homepage</a>
+</p>
+
+{% endblock %}

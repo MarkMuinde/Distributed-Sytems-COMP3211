@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<br>
+<br>
+<br>
+
+<h1>Current Weather Conditions at {{ city }}</h1>
+<h3>All times are in Greenwich Mean Time (GMT)</h3>
+<h3> The time format is <i>Y-M-D h:m:s</i> + 00:00</h3>
+
+<!--print the weather conditions using code from weather.html-->
+
+<!--temperature-->
+<p>
+    The current temperature is {{ temperature }} &#8451; with highs of {{ tempMax }} &#8451;<br>
+    and lows of {{ tempMin }} &#8451;
+</p>
+
+<p>
+    The temperature alert level is {{ tempID }} out of 4.
+</p>
+
+
+<!--humidity-->
+<p>
+    The current humidity is {{ humidity }} kg<sup>-1</sup>.<br>
+</p>
+
+<p>
+    The humidity alert level is {{ humidityID }} out of 3.
+</p>
+
+<!--wind speed and direction-->
+<p>
+    The current wind speed is {{ windSpeed }} m/s.<br>
+</p>
+
+<p>
+    The current wind direction is {{ windDirection }} &#176;.<br>
+</p>
+
+<!--cloud coverage-->
+<p>
+    The cloud coverage percentage is {{ cloudCoverage }}%.<br>
+</p>
+
+<!--print the advice based on weather conditions-->
+<h1>Our Advice For Your Trip To {{ city }}</h1>
+
+<p>
+    {{ advice }} <br><br>
+    For more details, {{ city }} has temperature highs of {{ tempMax }}&#8451; and lows of {{ tempMin }}&#8451;, wind
+    speeds of {{ windSpeed }} m/s and the humidity is {{ humidity }}%.<br>
+</p>
+
+<!--further advice from google-->
+<h1>Further Advice For Your Trip To {{ city }}</h1>
+
+<p>
+    Here are some links to help you enjoy your trip to {{ city }} based on the current weather conditions.<br>
+    Click any of the links below onto a different web page: <br>
+    {% for l in links %}
+<div>
+    <p> <a href = "{{ l }}">{{ l }}</a></p>
+</div>
+{% endfor %}
+</p>
+
+
+<!--redirect-->
+<footer>
+    Click here to go back to the homepage and try another city:<br>
+    <a href="/">Homepage</a>
+<footer>
+
+
+{% endblock %}
